@@ -9,12 +9,10 @@
  * @autor manuel.he@gmail.com
  * @version 1.0
  */
-$script_start_time = microtime(true);
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 date_default_timezone_set('America/Bogota');
-$show_stats = TRUE;
 
 //Start session
 session_cache_limiter(false);
@@ -47,13 +45,3 @@ foreach ($route_files as $route) {
 
 //Run application
 $app->run();
-
-// Print usage basic stats
-if($show_stats){
-    $total_time = microtime(true) - $script_start_time;
-    printf('
-    <!-- Generated in %01.3f secs -->'
-        ,$total_time
-    );
-}
-
