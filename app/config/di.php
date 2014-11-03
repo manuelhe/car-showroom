@@ -27,8 +27,11 @@ $di['config'] = $config + array(
 );
 //Database instance
 $di['db'] = function ($c) {
+    $socket = (isset($c['config']['db_socket']) && $c['config']['db_socket']) 
+        ? ";unix_socket={$c['config']['db_socket']}" 
+        : '';
     return new PDO(
-        "mysql:host={$c['config']['db_host']};port={$c['config']['db_port']};dbname={$c['config']['db_database']}",
+        "mysql:host={$c['config']['db_host']};port={$c['config']['db_port']};dbname={$c['config']['db_database']}{$socket}",
         $c['config']['db_username'],
         $c['config']['db_password'],
         array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
