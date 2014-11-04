@@ -10,7 +10,7 @@
 angular.module('jsappApp')
   .controller('CarCtrl', function ($scope, $http, $routeParams, $location) {
 
-    $http.get('http://localhost:80/gaptest/public-api/cars/' + $routeParams.id)
+    $http.get('http://localhost:80/car-showroom/public-api/cars/' + $routeParams.id)
         .success(function(data){
             $scope.car = data;
         })
