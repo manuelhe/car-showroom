@@ -38,6 +38,12 @@ cd car-showroom
 
 ### App Server
 
+Get the server dependencies running the following command in the root of the project:
+
+```
+composer install
+```
+
 #### Data persistance
 
 Create a new database and use the file in `/car-showroom/docs/test_carshowroom.sql` to set the required tables and some example data.
@@ -51,4 +57,32 @@ db_password = "root"
 db_database = "test_carshowroom"
 db_port = "8889"
 db_socket = "/Applications/MAMP/tmp/mysql/mysql.sock"
+```
+
+Now you're able to use the RESTful API:
+
+```
+GET http://localhost/car-showroom/public-api/cars
+GET http://localhost/car-showroom/public-api/cars/3
+GET http://localhost/car-showroom/admin-api/cars
+POST http://localhost/car-showroom/admin-api/cars
+GET http://localhost/car-showroom/admin-api/cars/3
+PUT http://localhost/car-showroom/admin-api/cars/3
+DELETE http://localhost/car-showroom/admin-api/cars/3
+```
+
+## Client application
+
+In a fresh installation you need to get all development and frontend dependencies:
+
+```
+car-showroom/jsapp/npm install
+car-showroom/jsapp/bower install
+```
+
+Then you can build the project or run the development server using:
+
+```
+grunt dist
+grunt server
 ```
