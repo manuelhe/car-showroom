@@ -1,0 +1,7 @@
+<ul class="row gallery">
+   <li class="col-lg-2 col-md-3 col-sm-3 col-xs-4" ng-repeat="car in cars">
+      <div class="deal" ng-show="car.deal">Today’s Deal</div>
+      <a href="/#/{{car.id}}"><img src="images/{{car.picture}}"/ alt="{{car.model}}" class="img-responsive img-thumbnail">
+      <h3>{{car.model}} - {{car.year}}</h3></a>
+   </li>
+</ul>

@@ -1,0 +1,16 @@
+<div class="car-detail">
+    <div class="pull-right">
+        <img src="images/{{car.picture}}" alt="{{car.model}}" class="img-thumbnail">
+    </div>
+    <div class="deal" ng-show="car.deal"><span>Today’s Deal</span></div>
+    <dl>
+        <dt>Model</dt>
+        <dd>{{car.model}}</dd>
+        <dt>Year</dt>
+        <dd>{{car.year}}</dd>
+        <dt>Color</dt>
+        <dd>{{car.color}}</dd>
+        <dt>Price</dt>
+        <dd>${{car.price}}</dd>
+    </dl>
+</div>
