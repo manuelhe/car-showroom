@@ -1,51 +1,88 @@
-car-showroom
-============
+# Car Showroom
 
-Test of an Angular.js app
+***
 
+Angular.js application with a RESTful backend in Slim Framework
 
-Project
+## Stack
 
-Vitrina carros en linea.
+* Persistence store: [MySQL](http://www.mysql.com/)
+* Backend: [Slim Framework](http://slimframework.com/)
+* Frontend App: [AngularJS](http://www.angularjs.org/)
+* CSS based on [Twitter's bootstrap](http://getbootstrap.com/)
 
- AngularJS
- HTML5, CSS3
- Responsive
+## Installation
 
-Entregables:
+### Platform & tools
 
- Archivos fuente de todo (no minificados)
- Imagenes
- Instrucciones breves para correr el proyecto junto con todos los archivos necesarios para el mismo
+You need to install a complete set of tools in the development environment, some of theme are:
 
+* PHP (~5.4)
+* MySQL
+* [Composer](http://getcomposer.org/)
+* Some HTTP server
+* Node.js
+* Grunt
+* Bower
+* SASS
+* Compass
 
-Desarrolle una vitrina de carros en línea utilizando AngularJS, HTML5, CSS3. 
-Debe ser responsive, crossbrowser (Chrome, Firefox, IE9 o superior) y funcionar en Android, iPhone y iPad.
+### Get the Code
 
-Sección Principal: muestra distintos modelos de carros con foto, modelo y año ordenado en filas y columnas (en tanto el ancho de la pantalla lo permita). 
+Either clone this repository or fork it on GitHub and clone your fork:
 
-- El despliegue y navegación queda por cuenta suya, utilice sus conocimientos de UI/UX.
-- Debe tener una caja de búsqueda que permite buscar por marca y desplegar solamente los automóviles de dicha marca.
-- Cada ítem(carro) puede ser seleccionado para comparación.
-- Agregue un tooltip jQuery que muestre el texto “Today’s Deal” al hacer hover sobre un ítem cuya propiedad “deal” sea true. Esto solamente en la lista de la sección principal.
+```
+git clone https://github.com/manuelhe/car-showroom.git
+cd car-showroom
+```
 
-Seccion Detalle: Muestra los detalles de un vehículo que fue seleccionado y una imagen de mayor tamaño.
+### App Server
 
-Seccion Comparativa: en esta sección se pueden comparar hasta 3 vehículos de forma que se muestren sus características y se facilite una elección por parte del usuario. Esta sección permite eliminar los vehículos seleccionados para comparación (eliminar en el widget, no de la lista general).
+Get the server dependencies running the following command in the root of the project:
 
-Widget comparativa: es una sección pequeña y no obstrusiva que permite al usuario observar en las secciones “detalle” y “principal” si hay vehículos que fueron seleccionados para comparación. Al hacer click se podrá observar dicha sección (la Sección Comparativa). Este widget debe mantener los carros que se quieren  comparar a través de las pantallas detalle y principal. Guardar la seleccion en variable de sesión, cookie o como se considere conveniente.
+```
+composer install
+```
 
-Panel de administración: Agregue un panel administración de carros para agregar, editar, eliminar los vehículos.
+#### Data persistance
 
-Características básicas de un vehículo:
+Create a new database and use the file in `/car-showroom/docs/test_carshowroom.sql` to set the required tables and some example data.
 
- id
- price
- brand
- model
- year
- color
- deal: boolean
+Open the file `/car-showroom/config/config.ini` and change the database connection settings:
 
-Los datos deben obtenerse a través de requests RESTful y la información puede ser almacenada en un archivo JSON.
-Utilice las técnicas que conozca a discreción con el fin de demostrar su conocimiento de la herramienta.
+```
+db_host = "localhost"
+db_username = "root"
+db_password = "root"
+db_database = "test_carshowroom"
+db_port = "8889"
+db_socket = "/Applications/MAMP/tmp/mysql/mysql.sock"
+```
+
+Now you're able to use the RESTful API:
+
+```
+GET http://localhost/car-showroom/public-api/cars
+GET http://localhost/car-showroom/public-api/cars/3
+GET http://localhost/car-showroom/admin-api/cars
+POST http://localhost/car-showroom/admin-api/cars
+GET http://localhost/car-showroom/admin-api/cars/3
+PUT http://localhost/car-showroom/admin-api/cars/3
+DELETE http://localhost/car-showroom/admin-api/cars/3
+```
+
+## Client application
+
+In a fresh installation you need to get all development and frontend dependencies:
+
+```
+car-showroom/jsapp/npm install
+car-showroom/jsapp/bower install
+```
+
+Then you can build the project or run the development server using:
+
+```
+grunt dist
+grunt server
+```
